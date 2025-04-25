@@ -24,7 +24,7 @@ class SplashScreen extends StatelessWidget {
             child: const Column(
               children: [
                 Spacer(flex: 306),
-                AppImage.asset(asset: 'weather_app_splash_logo', width: 120, height: 104, fit: BoxFit.contain),
+                AppImage.asset(asset: 'weather_splash_logo', width: 120, height: 104, fit: BoxFit.contain),
                 Spacer(flex: 402),
               ],
             ),
