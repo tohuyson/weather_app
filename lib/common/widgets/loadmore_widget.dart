@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:weather_app/common/styles.dart';
 
 import '../colors.dart';
 
@@ -87,7 +88,19 @@ class _LoadMoreWidgetState extends State<LoadMoreWidget> {
           }
         }
       },
-      header: const MaterialClassicHeader(color: UIColors.primaryColor),
+      header: ClassicHeader(
+        refreshStyle: RefreshStyle.UnFollow,
+        refreshingText: 'Đang cập nhật',
+        releaseIcon: Icon(Icons.arrow_upward, color: UIColors.defaultText),
+        releaseText: 'Thả để cập nhật ngay',
+        completeIcon: Icon(Icons.done, color: UIColors.defaultText),
+        completeText: 'Tải dữ liệu thành công',
+        idleIcon: Icon(Icons.arrow_downward, color: UIColors.defaultText),
+        idleText: 'Kéo để tải dữ liệu mới nhất',
+        failedIcon: Icon(Icons.error, color: UIColors.defaultText),
+        failedText: 'Tải dữ liệu thất bại',
+        textStyle: UITextStyle.regular,
+      ),
       footer: CustomFooter(
         builder: (BuildContext context, LoadStatus? mode) {
           if (mode == LoadStatus.loading) {

@@ -5,7 +5,7 @@ import 'package:weather_app/common/styles.dart';
 class TodayComponent extends StatelessWidget {
   const TodayComponent({super.key, required this.temperature, required this.location});
 
-  final int temperature;
+  final double temperature;
   final String location;
 
   @override

@@ -97,7 +97,7 @@ class APIService extends APIServiceProtocol {
       return BaseResponse(status: false, errorMessage: 'No internet connection');
     }
 
-    final header = <String, dynamic>{};
+    final header = DefaultHeader.instance.addDefaultHeader();
 
     return await _handler(dio, header, endpoint);
   }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:weather_app/common/colors.dart';
 import 'package:weather_app/common/constants.dart';
 import 'package:weather_app/common/styles.dart';
 
 class NextDayComponent extends StatefulWidget {
-  const NextDayComponent({super.key, this.nextDays = const []});
+  const NextDayComponent({super.key, this.averageTempNextFourDays = const {}});
 
-  final List<String> nextDays;
+  final Map<DateTime, String> averageTempNextFourDays;
 
   @override
   State<NextDayComponent> createState() => _NextDayComponentState();
@@ -39,18 +40,20 @@ class _NextDayComponentState extends State<NextDayComponent> with SingleTickerPr
         decoration: BoxDecoration(color: UIColors.white),
         padding: const EdgeInsets.all(16),
         child: ListView.separated(
-          itemCount: widget.nextDays.length,
+          itemCount: widget.averageTempNextFourDays.length,
           physics: AppConstants.physics,
           separatorBuilder: (context, index) => const Divider(),
           itemBuilder: (context, index) {
-            final item = widget.nextDays[index];
+            final day = widget.averageTempNextFourDays.keys.toList()[index];
+            final temp = widget.averageTempNextFourDays[day] ?? 0;
+            final datText = DateFormat('EEEE', 'vi').format(day);
             return SizedBox(
               height: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(item, style: UITextStyle.regular.copyWith(fontSize: 16, height: 1.2)),
-                  Text('26 C', style: UITextStyle.regular.copyWith(fontSize: 16, height: 1.2)),
+                  Text(datText, style: UITextStyle.regular.copyWith(fontSize: 16, height: 1.2)),
+                  Text('$temp C', style: UITextStyle.regular.copyWith(fontSize: 16, height: 1.2)),
                 ],
               ),
             );
