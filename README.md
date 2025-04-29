@@ -9,7 +9,6 @@ weather_app
 ├── ios
 ├── lib 
 │   ├── common
-│   ├── core
 │   ├── di
 │   ├── features
 │   │   └── home
